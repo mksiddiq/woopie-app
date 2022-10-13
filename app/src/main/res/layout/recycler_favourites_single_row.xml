@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/boxbg_home_single_row"
+    android:layout_margin="4dp"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <ImageView
+        android:id="@+id/imgRestaurantImageFav"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        android:layout_weight="3"
+        android:scaleType="centerCrop"
+        android:src="@drawable/restaurant" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+
+        <TextView
+            android:id="@+id/txtRestaurantNameFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="Restaurant Name"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtRestaurantPriceFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtRestaurantNameFav"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="₹300/person"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/btnFavouritesFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_favourite_pink" />
+
+        <TextView
+            android:id="@+id/txtRestaurantRatingFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnFavouritesFav"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="4.5"
+            android:textColor="#ffca28"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
