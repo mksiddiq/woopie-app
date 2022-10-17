@@ -5,25 +5,34 @@
       <map>
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/drawable/boxbg.xml" value="0.147" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/drawable/boxbg_home_single_row.xml" value="0.147" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/drawable/boxbg_ok_button.xml" value="0.147" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/drawable/button_boxbg.xml" value="0.147" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/drawable/ic_favourite_pink_fill.xml" value="0.147" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/font/montserrat_thin.xml" value="0.2722222222222222" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_cart.xml" value="0.16666666666666666" />
-        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_forgot_password.xml" value="0.290625" />
-        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_login.xml" value="0.290625" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_confirmation.xml" value="0.22" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_main.xml" value="0.2765625" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.290625" />
-        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_otp.xml" value="0.290625" />
-        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_registration.xml" value="0.290625" />
-        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_restaurant_details.xml" value="0.22" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_otp.xml" value="0.22" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_registration.xml" value="0.16666666666666666" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_restaurant_details.xml" value="0.16666666666666666" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/activity_splash_screen.xml" value="0.290625" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/fragment_faqs.xml" value="0.22" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/fragment_favourite_restaurants.xml" value="0.213768115942029" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/fragment_home.xml" value="0.290625" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/fragment_my_profile.xml" value="0.16120218579234974" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/fragment_order_history.xml" value="0.22" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/menu_navigation_drawer.xml" value="0.21796875" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/navigation_drawer_header.xml" value="0.290625" />
-        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycler_cart_single_row.xml" value="0.16120218579234974" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycelr_order_history_food_item_single_row.xml" value="0.21396192203082504" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycler_cart_single_row.xml" value="0.22" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycler_favourites_single_row.xml" value="0.22" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycler_home_single_row.xml" value="0.290625" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycler_order_history_single_row.xml" value="0.22" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/layout/recycler_res_details_single_row.xml" value="0.22" />
+        <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/menu/menu_home_sort.xml" value="0.22984244670991658" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/menu/menu_navigation_drawer.xml" value="0.290625" />
         <entry key="..\:/Siddiq Documents/Android App Dev/Woopie/app/src/main/res/xml/network_security_config.xml" value="0.21796875" />
       </map>

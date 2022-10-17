@@ -20,7 +20,7 @@ import java.util.zip.Inflater
 
 class HomeRecyclerAdapter(val context: Context, val itemList: List<Restaurant>) :
     RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
-
+    lateinit var sharedPreferences: SharedPreferences
 
     class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val llContent: LinearLayout = view.findViewById(R.id.llContent)
@@ -49,6 +49,11 @@ class HomeRecyclerAdapter(val context: Context, val itemList: List<Restaurant>) 
         holder.llContent.setOnClickListener {
             val intent = Intent(context, RestaurantDetailsActivity::class.java)
             intent.putExtra("restaurant_id", restaurant.restaurantId)
+            sharedPreferences =
+                context.getSharedPreferences(context.resources.getString(R.string.woopie_shared_preferences),
+                    Context.MODE_PRIVATE)
+            sharedPreferences.edit().putString("restaurant_name", restaurant.restaurantName).apply()
+            sharedPreferences.edit().putString("restaurant_id", restaurant.restaurantId).apply()
             context.startActivity(intent)
         }
 
@@ -65,7 +70,7 @@ class HomeRecyclerAdapter(val context: Context, val itemList: List<Restaurant>) 
 
         if (isFav) {
             holder.btnFavourites.setImageResource(R.drawable.ic_favourite_pink_fill)
-        } else{
+        } else {
             holder.btnFavourites.setImageResource(R.drawable.ic_favourite_pink)
         }
 
@@ -79,18 +84,20 @@ class HomeRecyclerAdapter(val context: Context, val itemList: List<Restaurant>) 
                     Toast.makeText(context, "Restaurant added to favourites!", Toast.LENGTH_SHORT)
                         .show()
                     holder.btnFavourites.setImageResource(R.drawable.ic_favourite_pink_fill)
-                } else{
+                } else {
                     Toast.makeText(context, "Some error occurred!", Toast.LENGTH_SHORT)
                         .show()
                 }
-            } else{
+            } else {
                 val async = DBAsyncTask(context, restaurantEntity, 3).execute()
                 val result = async.get()
-                if(result){
-                    Toast.makeText(context, "Restaurant removed from favourites!", Toast.LENGTH_SHORT)
+                if (result) {
+                    Toast.makeText(context,
+                        "Restaurant removed from favourites!",
+                        Toast.LENGTH_SHORT)
                         .show()
                     holder.btnFavourites.setImageResource(R.drawable.ic_favourite_pink)
-                } else{
+                } else {
                     Toast.makeText(context, "Some error occurred!", Toast.LENGTH_SHORT)
                         .show()
                 }

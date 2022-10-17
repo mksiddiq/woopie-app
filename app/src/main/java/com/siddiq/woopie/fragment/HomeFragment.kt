@@ -6,10 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -25,6 +23,9 @@ import com.siddiq.woopie.adapter.HomeRecyclerAdapter
 import com.siddiq.woopie.model.Restaurant
 import com.siddiq.woopie.util.ConnectionManager
 import org.json.JSONException
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.HashMap
 
 class HomeFragment : Fragment() {
     lateinit var homeRecyclerView: RecyclerView
@@ -34,6 +35,14 @@ class HomeFragment : Fragment() {
     lateinit var layoutManager: RecyclerView.LayoutManager
 
     var restaurantInfoList = arrayListOf<Restaurant>()
+
+    var ratingComparator = Comparator<Restaurant>{ res1, res2 ->
+        if(res1.restaurantRating.compareTo(res2.restaurantRating, true) == 0){
+            res1.restaurantName.compareTo(res2.restaurantName, true)
+        } else{
+            res1.restaurantRating.compareTo(res2.restaurantRating, true)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +55,7 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
+        setHasOptionsMenu(true)
 
         homeRecyclerView = view.findViewById(R.id.homeRecyclerView)
         progressBar = view.findViewById(R.id.progressBar)
@@ -132,6 +141,22 @@ class HomeFragment : Fragment() {
         }
 
         return view
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_home_sort, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if(id == R.id.actionSort){
+            Collections.sort(restaurantInfoList, ratingComparator)
+            restaurantInfoList.reverse()
+        }
+        recyclerViewAdapter.notifyDataSetChanged()
+
+        return super.onOptionsItemSelected(item)
     }
 
 

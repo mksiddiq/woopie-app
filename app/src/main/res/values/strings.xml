@@ -7,4 +7,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="woopie_shared_preferences">Woopie Preferences</string>
+
+    <string name="question_one">Q1) What to do if I do not remember my password?</string>
+    <string name="answer_one">Ans) You have already created an account but you can\'t remember your password? Click on Login/Sign Up at the top of the page. Then click on Forgot Password?. Fill out your phone number and a password recovery will be sent to you by phone.</string>
+    <string name="question_two">Q2) What are your delivery hours?</string>
+    <string name="answer_two">Ans) Our delivery hour is from 10:00 AM to 08:00 PM.</string>
+    <string name="question_three">Q3) How much time it takes to deliver the order?</string>
+    <string name="answer_three">Ans) Generally it takes between 45 minutes to 1 hour time to deliver the order. Due to long distance or heavy traffic, delivery might take few extra minutes.</string>
+    <string name="question_four">Q4) Do I have to create an account to place an order?</string>
+    <string name="answer_four">Ans) Creating an account is mandatory, but you can see order without having to sign up. We make sure that ordering food online at Woopie delivery is quick and fuss-free. After placing your order, you will have the option of creating an account.</string>
+    <string name="question_five">Q5) Can I order from any location?</string>
+    <string name="answer_five">Ans) We are only serving in Delhi at present.</string>
+    <string name="question_six">Q6) Do you support bulk orders?</string>
+    <string name="answer_six">Ans) In order to provide all customers with a great selection and to ensure on-time delivery of your meal, we request you to order bulk quantity at least 24 hours in advance.</string>
+
 </resources>

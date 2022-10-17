@@ -20,9 +20,10 @@ import android.app.Activity as Activity1
 import com.siddiq.woopie.activity.RestaurantDetailsActivity as RestaurantDetailsActivity1
 import com.siddiq.woopie.activity.RestaurantDetailsActivity as RestaurantDetailsActivity2
 
-class RestaurantDetailsRecyclerAdapter(val context: Context, val dishList: List<Dish>) :
+class RestaurantDetailsRecyclerAdapter(val context: Context, val dishList: List<Dish>, val button: Button) :
     RecyclerView.Adapter<RestaurantDetailsRecyclerAdapter.RestaurantDetailsViewHolder>() {
-    //lateinit var sharedPreferences: SharedPreferences
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var btnProceedToCart: Button
 
     class RestaurantDetailsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val txtSerialNumber: TextView = view.findViewById(R.id.txtSerialNumber)
@@ -41,57 +42,58 @@ class RestaurantDetailsRecyclerAdapter(val context: Context, val dishList: List<
     override fun onBindViewHolder(holder: RestaurantDetailsViewHolder, position: Int) {
         val dish = dishList[position]
         val number = position + 1
-        //sharedPreferences = context.getSharedPreferences("woopie_shared_preferences", Context.MODE_PRIVATE)
+        sharedPreferences =
+            context.getSharedPreferences(context.resources.getString(R.string.woopie_shared_preferences),
+                Context.MODE_PRIVATE)
 
         holder.txtDishName.text = dish.dishName
         holder.txtDishPrice.text = "Rs. " + dish.dishPrice
         holder.txtSerialNumber.text = "$number"
 
-        val orderId =dish.dishId
+        val orderId = dish.dishId
         val orderEntity = OrderEntity(
             orderId.toInt() as Int,
             dish.dishName,
             dish.dishPrice
         )
+        btnProceedToCart = button
         holder.btnAdd.setOnClickListener {
-            /*val dbOrderList = CheckDbEmpty(context).execute().get()
-            val btnProceedToCart = android.app.Activity().findViewById<Button>(R.id.btnProceedToCart)
-            val btnProceedToCart =
-            if(dbOrderList.isEmpty()){
-                //sharedPreferences.edit().putBoolean("isOrderListEmpty", true).apply()
-                btnProceedToCart.visibility = View.GONE
-            } else {
-                //sharedPreferences.edit().putBoolean("isOrderListEmpty", false).apply()
-                btnProceedToCart.visibility = View.VISIBLE
-            }*/
 
-            //sharedPreferences.edit().putBoolean("btnAddClicked", true).apply()
-            if(!DBAsyncTaskDetails(context, orderEntity, 1).execute().get()){
+            if (!DBAsyncTaskDetails(context, orderEntity, 1).execute().get()) {
                 val async = DBAsyncTaskDetails(context, orderEntity, 2).execute()
                 val result = async.get()
                 if (result) {
                     Toast.makeText(context, "Order added to cart!", Toast.LENGTH_SHORT)
                         .show()
-                    val btnColor =ContextCompat.getColor(context, R.color.app_purple_color)
+                    val btnColor = ContextCompat.getColor(context, R.color.app_purple_color)
                     holder.btnAdd.setBackgroundColor(btnColor)
                     holder.btnAdd.text = "remove"
-                } else{
+                } else {
                     Toast.makeText(context, "Some error occurred!", Toast.LENGTH_SHORT)
                         .show()
                 }
-            } else{
+            } else {
                 val async = DBAsyncTaskDetails(context, orderEntity, 3).execute()
                 val result = async.get()
-                if(result){
+                if (result) {
                     Toast.makeText(context, "Order deleted to cart!", Toast.LENGTH_SHORT)
                         .show()
-                    val btnColor =ContextCompat.getColor(context, R.color.app_background_color)
+                    val btnColor = ContextCompat.getColor(context, R.color.app_background_color)
                     holder.btnAdd.setBackgroundColor(btnColor)
                     holder.btnAdd.text = "Add"
-                } else{
+                } else {
                     Toast.makeText(context, "Some error occurred!", Toast.LENGTH_SHORT)
                         .show()
                 }
+            }
+            val dbOrderList = CheckDbEmpty(context).execute().get()
+            if(dbOrderList.isEmpty()){
+                //sharedPreferences.edit().putBoolean("isOrderListEmpty", true).apply()
+                btnProceedToCart.visibility = View.GONE
+
+            } else {
+                //sharedPreferences.edit().putBoolean("isOrderListEmpty", false).apply()
+                btnProceedToCart.visibility = View.VISIBLE
             }
         }
     }

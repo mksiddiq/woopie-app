@@ -38,7 +38,7 @@ class RestaurantDetailsActivity : AppCompatActivity() {
     lateinit var layoutManager: RecyclerView.LayoutManager
     lateinit var recyclerViewAdapter: RestaurantDetailsRecyclerAdapter
     lateinit var btnProceedToCart: Button
-    //lateinit var sharedPreferences: SharedPreferences
+    lateinit var sharedPreferences: SharedPreferences
 
     var restaurantId: String? = "100"
 
@@ -53,7 +53,9 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         progressBarDetails = findViewById(R.id.progressBarDetails)
         progressLayoutDetails = findViewById(R.id.progressLayoutDetails)
         resDetailsRecyclerView = findViewById(R.id.resDetailsRecyclerView)
-        btnProceedToCart= findViewById(R.id.btnProceedToCart)
+        btnProceedToCart = findViewById(R.id.btnProceedToCart)
+        sharedPreferences = getSharedPreferences(getString(R.string.woopie_shared_preferences),
+            Context.MODE_PRIVATE)
 
 
         layoutManager = LinearLayoutManager(this@RestaurantDetailsActivity)
@@ -77,9 +79,9 @@ class RestaurantDetailsActivity : AppCompatActivity() {
                 JsonObjectRequest(Request.Method.GET, url + restaurantId, null, Response.Listener {
                     try {
                         //btnAddToCart.visibility = View.INVISIBLE
-                       /* if(sharedPreferences.getBoolean("btnAddClicked", false)){
-                            btnAddToCart.visibility = View.VISIBLE
-                        }*/
+                        /* if(sharedPreferences.getBoolean("btnAddClicked", false)){
+                             btnAddToCart.visibility = View.VISIBLE
+                         }*/
                         progressLayoutDetails.visibility = View.GONE
                         val data = it.getJSONObject("data")
                         val success = data.getBoolean("success")
@@ -97,7 +99,7 @@ class RestaurantDetailsActivity : AppCompatActivity() {
 
                                 recyclerViewAdapter =
                                     RestaurantDetailsRecyclerAdapter(this@RestaurantDetailsActivity,
-                                        dishList)
+                                        dishList, btnProceedToCart)
 
                                 resDetailsRecyclerView.adapter = recyclerViewAdapter
                                 resDetailsRecyclerView.layoutManager = layoutManager
@@ -143,14 +145,14 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         }
 
         //sharedPreferences = getSharedPreferences("woopie_shared_preferences", Context.MODE_PRIVATE)
-        //val isOrderListEmpty = sharedPreferences.getBoolean("isOrderListEmpty", false)
+        /*val isOrderListEmpty = sharedPreferences.getBoolean("isOrderListEmpty", true)
 
-        /*if(isOrderListEmpty){
+        if(isOrderListEmpty){
             btnProceedToCart.visibility = View.GONE
         } else{
             btnProceedToCart.visibility = View.VISIBLE
         }*/
-
+        btnProceedToCart.visibility=View.GONE
         btnProceedToCart.setOnClickListener {
             val intent = Intent(this@RestaurantDetailsActivity, CartActivity::class.java)
             startActivity(intent)
@@ -158,7 +160,7 @@ class RestaurantDetailsActivity : AppCompatActivity() {
 
     }
 
-    class DeleteOrdersFromDatabase(val context: Context): AsyncTask<Void, Void, Unit>(){
+    class DeleteOrdersFromDatabase(val context: Context) : AsyncTask<Void, Void, Unit>() {
         override fun doInBackground(vararg p0: Void?): Unit {
             val db = Room.databaseBuilder(context, OrderDatabase::class.java, "orders-db").build()
             return db.orderDao().deleteAllOrders()

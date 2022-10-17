@@ -1,16 +1,24 @@
 package com.siddiq.woopie.activity
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.MenuItem
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.room.Room
 import com.google.android.material.navigation.NavigationView
 import com.siddiq.woopie.R
+import com.siddiq.woopie.database.OrderDatabase
 import com.siddiq.woopie.fragment.*
 
 class NavigationDrawerActivity : AppCompatActivity() {
@@ -20,6 +28,7 @@ class NavigationDrawerActivity : AppCompatActivity() {
     lateinit var frameLayout: FrameLayout
     lateinit var navigationView: NavigationView
     var previousMenuItem: MenuItem? = null
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +43,10 @@ class NavigationDrawerActivity : AppCompatActivity() {
         setUpToolbar()
 
         openHome()
+
+        RestaurantDetailsActivity.DeleteOrdersFromDatabase(applicationContext).execute().get()
+
+        sharedPreferences = getSharedPreferences(getString(R.string.woopie_shared_preferences), Context.MODE_PRIVATE)
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(this@NavigationDrawerActivity,
             drawerLayout,
@@ -85,10 +98,20 @@ class NavigationDrawerActivity : AppCompatActivity() {
                     drawerLayout.closeDrawers()
                 }
                 R.id.logout -> {
-                    val intent = Intent(this@NavigationDrawerActivity, LoginActivity::class.java)
-//                    sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
-                    startActivity(intent)
-                    finish()
+                    sharedPreferences.edit().clear().apply()
+                    val dialog = AlertDialog.Builder(this@NavigationDrawerActivity)
+                    dialog.setTitle("Confirmation")
+                    dialog.setMessage("Are you sure you want to logout?")
+                    dialog.setPositiveButton("Yes") { text, listener ->
+                        val intent = Intent(this@NavigationDrawerActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    dialog.setNegativeButton("No") { text, listener ->
+
+                    }
+                    dialog.create()
+                    dialog.show()
                 }
             }
             return@setNavigationItemSelectedListener true

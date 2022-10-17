@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MyProfileFragment">
+    tools:context=".fragment.MyProfileFragment"
+    android:background="@color/app_background_color">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/imgProfileFragment"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:src="@drawable/user"
+        android:layout_marginBottom="20dp"/>
+
     <TextView
+        android:id="@+id/txtNameProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgProfileFragment"
+        android:layout_margin="8dp"
+        android:background="@drawable/boxbg"
+        android:padding="10dp"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtMobileNumberProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNameProfile"
+        android:layout_margin="8dp"
+        android:background="@drawable/boxbg"
+        android:padding="10dp"
+        android:text="Mobile Number"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtEmailProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMobileNumberProfile"
+        android:text="Email Address"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"
+        android:background="@drawable/boxbg"/>
+
+    <TextView
+        android:id="@+id/txtDeliveryProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEmailProfile"
+        android:text="Delivery Address"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"
+        android:background="@drawable/boxbg"/>
+
+</RelativeLayout>
